@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        form
+        {
+            background-color:tomato;
+            padding: 40px;
+            width: 50%;
+            margin: auto;
+            border-radius: 15px;
+
+        }
+        form input
+        {
+            
+           width: 70%;
+           margin-bottom: 10px;
+           padding: 10px 0px;
+           background-color: wheat;
+           border: 0;
+           border-radius: 15px;
+           
+        }
+        .yas
+        {
+            margin-left: 8px;
+        }
+        .boy
+        {
+            margin-left: 6px;
+        }
+        ::placeholder
+        {
+          font-size: 15px;
+          padding-left: 15px;
+        }
+        #btn
+        {
+            
+            padding: 15px 40px;
+            text-align: center;
+            border-radius: 15px;
+            border: none;
+            margin:10px auto;
+            background-color: yellow;
+          
+        }
+        select
+        {
+            width: 40%;
+            margin-top: 10px;
+            padding: 10px;
+            background-color:wheat;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <form>
+        <label>YAŞ:</label>
+        <input type="text" placeholder="yaşınızı giriniz:" class="yas"><br>
+
+        <label>BOY:</label>
+        <input type="text" placeholder="boyunuzu giriniz:" class="boy"><br>
+
+        <label>KİLO:</label>
+        <input type="text" placeholder="kilonuzu giriniz:" class="kilo"><br>
+
+       <label for="cinsiyet">CİNSİYETİNİZİ SEÇİN:</label><br>
+
+       <select name="cinsiyet" id="cnsyt">
+        <option disabled selected>Cinsiyetiniz</option>
+        <option>kadın</option>
+        <option>erkek</option>
+       </select><br>
+
+       <button id="btn" type="button">SEÇ</button>
+
+       <p id="sonuc"></p>
+       <p id="sonucek"></p>
+    </form>
+
+    <script>
+      
+        let  btn=document.getElementById("btn");
+
+        btn.onclick=function(){
+        let yas=document.querySelector(".yas").value;
+        let boy=(parseFloat)((document.querySelector(".boy")).value);
+        let kilo=(parseFloat)((document.querySelector(".kilo")).value);
+        let cnsyt = document.getElementById("cnsyt").value;
+        let sonuc=document.getElementById("sonuc");
+        let sonucek=document.getElementById("sonucek");
+        console.log(boy);
+        console.log(kilo);
+        console.log(yas);
+        let kitleIndex=(parseFloat)(kilo/(boy*boy));
+
+        if (kitleIndex<=18.5) {
+            sonuc.innerHTML="Düşük kilolu " +kitleIndex;
+        }
+        else if(18.5<kitleIndex && kitleIndex<=24.9){
+            sonuc.innerHTML="Normal kilolu "+kitleIndex;
+     
+        }
+        else if(25<=kitleIndex && kitleIndex<=29.9)
+        {
+            sonuc.innerHTML="Fazla kilolu "+kitleIndex;
+        }
+        else if(30<kitleIndex && kitleIndex<40)
+        {
+            sonuc.innerHTML="Obez "+kitleIndex;
+        }
+        else if(kitleIndex=>40)
+        {
+            sonuc.innerHTML="Aşırı Obez "+kitleIndex;
+        }
+        
+        
+        if(yas>=60 &&cnsyt=="kadın") {
+            sonucek.innerHTML="sebze tüketimini arttırmalısınız...";
+           
+        }
+        else if(yas>=50 && cnsyt=="erkek"){
+            sonucek.innerHTML="bol bol yürüyüş yapmalısınız...";
+        }
+    }
+    </script>
+
+
+
+</body>
+</html>
